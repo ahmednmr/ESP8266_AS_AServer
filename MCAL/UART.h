@@ -10,7 +10,7 @@
 
 
 #define FOSC 8000000// Clock Speed
-#define BAUD 9600
+#define BAUD 115200
 
 void init_UART(void);
 void UART_SendChar(char data);

@@ -1,3 +1,5 @@
-UART.d UART.o: ../UART.c ../UART.h
+uart.d uart.o: ../uart.c ../uart.h ../uartcfg.h
 
-../UART.h:
+../uart.h:
+
+../uartcfg.h:

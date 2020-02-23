@@ -23,5 +23,4 @@ S_UPPER_DEPS :=
 SUBDIRS := \
 . \
 MCAL \
-HAL \
 

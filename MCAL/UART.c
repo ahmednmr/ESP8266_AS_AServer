@@ -16,12 +16,11 @@ void init_UART(void)
 	unsigned int Value_of_UBBR = 0;
 
 
-
-		UCSRB = (1 << RXEN) | (1 << TXEN);
+	    UCSRA= (1<<U2X);
+		UCSRB = (1 << RXEN) | (1 << TXEN)|(1<<RXCIE);
        UCSRC = (1 << URSEL) | (3 << UCSZ0);
-       Value_of_UBBR = FOSC/16/BAUD-1;
-				UBRRL = (unsigned int)Value_of_UBBR;
-				UBRRH = (unsigned int)(Value_of_UBBR>>8);
+				UBRRL = 8;
+				UBRRH =0;
 }
 
 

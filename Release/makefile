@@ -9,7 +9,6 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include MCAL/subdir.mk
--include HAL/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -32,56 +31,56 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-RF_Module_RX.lss \
+ESP8266_01_Module_Server_NMR2.lss \
 
 FLASH_IMAGE += \
-RF_Module_RX.hex \
+ESP8266_01_Module_Server_NMR2.hex \
 
 EEPROM_IMAGE += \
-RF_Module_RX.eep \
+ESP8266_01_Module_Server_NMR2.eep \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: RF_Module_RX.elf secondary-outputs
+all: ESP8266_01_Module_Server_NMR2.elf secondary-outputs
 
 # Tool invocations
-RF_Module_RX.elf: $(OBJS) $(USER_OBJS)
+ESP8266_01_Module_Server_NMR2.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,RF_Module_RX.map -mmcu=atmega32 -o "RF_Module_RX.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-gcc -Wl,-Map,ESP8266_01_Module_Server_NMR2.map -mmcu=atmega32 -o "ESP8266_01_Module_Server_NMR2.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-RF_Module_RX.lss: RF_Module_RX.elf
+ESP8266_01_Module_Server_NMR2.lss: ESP8266_01_Module_Server_NMR2.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S RF_Module_RX.elf  >"RF_Module_RX.lss"
+	-avr-objdump -h -S ESP8266_01_Module_Server_NMR2.elf  >"ESP8266_01_Module_Server_NMR2.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-RF_Module_RX.hex: RF_Module_RX.elf
+ESP8266_01_Module_Server_NMR2.hex: ESP8266_01_Module_Server_NMR2.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex RF_Module_RX.elf  "RF_Module_RX.hex"
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ESP8266_01_Module_Server_NMR2.elf  "ESP8266_01_Module_Server_NMR2.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-RF_Module_RX.eep: RF_Module_RX.elf
+ESP8266_01_Module_Server_NMR2.eep: ESP8266_01_Module_Server_NMR2.elf
 	@echo 'Create eeprom image (ihex format)'
-	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex RF_Module_RX.elf  "RF_Module_RX.eep"
+	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex ESP8266_01_Module_Server_NMR2.elf  "ESP8266_01_Module_Server_NMR2.eep"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: RF_Module_RX.elf
+sizedummy: ESP8266_01_Module_Server_NMR2.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega32 RF_Module_RX.elf
+	-avr-size --format=avr --mcu=atmega32 ESP8266_01_Module_Server_NMR2.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(ASM_DEPS)$(EEPROM_IMAGE)$(FLASH_IMAGE)$(ELFS)$(LSS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS) RF_Module_RX.elf
+	-$(RM) $(OBJS)$(C_DEPS)$(ASM_DEPS)$(EEPROM_IMAGE)$(FLASH_IMAGE)$(ELFS)$(LSS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS) ESP8266_01_Module_Server_NMR2.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
